@@ -7,6 +7,7 @@ use App\Controller\AppController;
  * Doadores Controller
  *
  * @property \App\Model\Table\DoadoresTable $Doadores
+ * @property \App\Model\Table\EnderecosTable $Enderecos
  */
 class DoadoresController extends AppController
 {
