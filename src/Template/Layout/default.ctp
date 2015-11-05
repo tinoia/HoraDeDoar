@@ -17,16 +17,17 @@
 <html>
     <?php echo $this->element('head'); ?> 
     <head>
+        <?php echo $this->element('navbartop'); ?> 
 
         <title>
-            <?= $this->fetch('title') ?>
+            <?= $this->fetch('poeijaseir') ?>
         </title>
 
     </head>
     <body>
         <!--  wrapper -->
         <div id="wrapper">
-            <?php echo $this->element('navbartop'); ?> 
+            
             <?php echo $this->element('navbarside'); ?> 
         </div>
         <!-- end wrapper -->
@@ -36,6 +37,7 @@
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </section>
+
         <?php echo $this->element('footer'); ?> 
     </body>
 </html>
