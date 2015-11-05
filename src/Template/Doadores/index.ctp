@@ -7,7 +7,7 @@
 </div>
 
 
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <?php echo __('Doadores'); ?>
     </div>
@@ -22,6 +22,7 @@
                         <th><?php echo $this->Paginator->sort('email'); ?></th>
                         <th><?php echo $this->Paginator->sort('senha'); ?></th>
                         <th><?php echo $this->Paginator->sort('id_endereço'); ?></th>
+                        <th><?php echo $this->Paginator->sort('Opções'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,11 +45,14 @@
         </table>
 
     </div>
+    <div class="panel-footer">
+        <a href="/HoraDeDoar/doadores/add" class="btn btn-info" role="button">Adicionar Novo</a>
+        <a href="/HoraDeDoar" class="btn btn-info" role="button">Voltar</a>
+    </div>
 
     <div>   
-    <a href="/HoraDeDoar/doadores/add" class="btn btn-info" role="button">Adicionar Doador</a>
-    <a href="/HoraDeDoar" class="btn btn-info" role="button">Voltar</a>
-   
+        
+     
 
     </div>  
 
