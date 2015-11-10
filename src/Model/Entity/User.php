@@ -4,17 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Doadore Entity.
+ * User Entity.
  *
- * @property int $id_doadores
- * @property int $users_iduser
- * @property string $nome_doadores
- * @property string $cpf_doadores
- * @property string $email_doadores
- * @property string $senha_doadores
- * @property int $id_enderecos
+ * @property int $iduser
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property bool $type
  */
-class Doadore extends Entity
+class User extends Entity
 {
 
     /**
@@ -28,6 +26,6 @@ class Doadore extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id_doadores' => false,
+        'iduser' => false,
     ];
 }

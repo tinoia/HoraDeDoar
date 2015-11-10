@@ -16,6 +16,9 @@
             <li>
                 <a href="<?php echo $this->Url->build('/') ?>"><i class="fa fa-home fa-fw"></i>Home</a>
             </li>
+             <li>
+                <a href="<?php echo $this->Url->build('/Users') ?>"><i class="fa fa-sitemap fa-fw"></i> Usuários<span class="fa arrow"></span></a>
+            </li>
             <li>
                 <a href="<?php echo $this->Url->build('/Doadores') ?>"><i class="fa fa-sitemap fa-fw"></i> Doadores<span class="fa arrow"></span></a>
             </li>

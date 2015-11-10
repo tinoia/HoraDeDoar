@@ -19,6 +19,7 @@ use Cake\ORM\Entity;
  * @property string $email_instituicoes
  * @property string $senha_instituicoes
  * @property int $id_enderecos
+ * @property int $users_iduser
  */
 class Instituico extends Entity
 {
