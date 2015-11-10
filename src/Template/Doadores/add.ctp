@@ -21,17 +21,18 @@
     				<?php  echo $this->Form->input('nome_doadores',array('label'=>'Nome completo','class'=>'form-control')); ?>
              </div>
              <div class="form-group">
-                <?php  echo $this->Form->input('cpf_doadores',array('label'=>'CPF','class'=>'form-control')); ?>
+                <?php  echo $this->Form->input('cpf_doadores',array('label'=>'CPF','class'=>'form-control',)); ?>
             </div>
             <div class="form-group">
-                <?php  echo $this->Form->input('email_doadores',array('label'=>'Email','class'=>'form-control')); ?>
+                <?php  echo $this->Form->input('email_doadores',array('label'=>'Email','class'=>'form-control','type'=>'email')); ?>
             </div>
             <div class="form-group">
-                <?php  echo $this->Form->input('senha_doadores',array('label'=>'Senha','class'=>'form-control')); ?>
+                <?php  echo $this->Form->input('senha_doadores',array('label'=>'Senha','class'=>'form-control','type'=>'password')); ?>
             </div>
             <div class="form-group">
                 <?php  echo $this->Form->input('id_enderecos',array('label'=>'ID','class'=>'form-control')); ?>
             </div>
+            
             <div class="panel-footer">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
             <button type="reset" class="btn btn-success">Limpar</button>

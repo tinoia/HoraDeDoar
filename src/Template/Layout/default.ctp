@@ -17,14 +17,17 @@
 <html>
     <?php echo $this->element('head'); ?> 
     <head>
+        <!-- page wrapper -->
+       
         <?php echo $this->element('navbartop'); ?> 
-
+        
         <title>
             <?= $this->fetch('poeijaseir') ?>
         </title>
 
     </head>
     <body>
+        
         <!--  wrapper -->
         <div id="wrapper">
             
@@ -32,12 +35,13 @@
         </div>
         <!-- end wrapper -->
 
-        
+        <div id="page-wrapper">
         <section class="container clearfix">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </section>
 
         <?php echo $this->element('footer'); ?> 
+    </div>
     </body>
 </html>

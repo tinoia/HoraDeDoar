@@ -49,6 +49,11 @@
             <div class="form-group">
                 <?php  echo $this->Form->input('id_instituicoes',array('label'=>'ID da instituicao','class'=>'form-control')); ?>
             </div>
+            <div class="form-group">
+                <?php echo $this->Form->label('doação anonima');?>
+                <?php  echo $this->Form->checkbox('anonima_doacoes'); ?>
+            </div>
+
             
             <div class="panel-footer">
             <button type="submit" class="btn btn-primary">Cadastrar</button>

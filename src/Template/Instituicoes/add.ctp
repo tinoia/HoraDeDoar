@@ -50,8 +50,11 @@
             </div>
             
             <div class="form-group">
-                <?php  echo $this->Form->input('senha_instituicoes',array('label'=>'Senha','class'=>'form-control')); ?>
+                <?php  echo $this->Form->input('senha_instituicoes',array('label'=>'Senha','class'=>'form-control','type'=>'password')); ?>
             </div>
+
+           
+            
 
 
             <div class="panel-footer">
