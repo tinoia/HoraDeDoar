@@ -16,33 +16,24 @@ class UsersController extends AppController
      *
      * @return void
      */
-    public function index()
+
+    public function beforeFilter(\Cake\Event\Event $event)
     {
-        $this->set('users', $this->paginate($this->Users));
-        $this->set('_serialize', ['users']);
+        $this->Auth->allow('add');
+        $this->Auth->allow('index');
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id User id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function view($id = null)
+     public function index()
+     {
+        $this->set('users', $this->Users->find('all'));
+     }
+
+    public function view($id)
     {
-        $user = $this->Users->get($id, [
-            'contain' => []
-        ]);
-        $this->set('user', $user);
-        $this->set('_serialize', ['user']);
+        $user = $this->Users->get($id);
+        $this->set(compact('user'));
     }
 
-    /**
-     * Add method
-     *
-     * @return void Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $user = $this->Users->newEntity();
@@ -50,14 +41,13 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                return $this->redirect(['action' => 'add']);
             }
+            $this->Flash->error(__('Unable to add the user.'));
         }
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
+        $this->set('user', $user);
     }
+
 
     /**
      * Edit method
@@ -88,7 +78,7 @@ class UsersController extends AppController
      * Delete method
      *
      * @param string|null $id User id.
-     * @return void Redirects to index.
+     * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function delete($id = null)
@@ -102,4 +92,22 @@ class UsersController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login() {
+
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error(__('Usuário ou senha invalidos'));
+        }
+    }
+
+    public function logout() {
+        $this->redirect($this->Auth->logout());
+    }
 }
+
+

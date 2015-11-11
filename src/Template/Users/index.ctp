@@ -19,7 +19,7 @@
                         <th><?php echo $this->Paginator->sort('id'); ?></th>
                         <th><?php echo $this->Paginator->sort('nome'); ?></th>
                         <th><?php echo $this->Paginator->sort('email'); ?></th>
-                        <th><?php echo $this->Paginator->sort('senha'); ?></th>
+                        <th><?php echo $this->Paginator->sort('password'); ?></th>
                         <th><?php echo $this->Paginator->sort('tipo'); ?></th>
                        
                         <th><?php echo $this->Paginator->sort('Opções'); ?></th>
@@ -31,7 +31,7 @@
                         <td><?= $this->Number->format($user->iduser) ?></td>
                         <td><?= h($user->name) ?></td>
                         <td><?= h($user->email) ?></td>
-                        <td><?= h($user->type) ?></td>
+                        <td><?= h($user->password) ?></td>
                         
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->iduser]) ?>

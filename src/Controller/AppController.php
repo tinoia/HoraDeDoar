@@ -44,6 +44,41 @@ class AppController extends Controller
         parent::initialize();
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'loginRedirect' =>  [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
+        // Permite a ação display, assim nosso pages controller
+        // continua a funcionar.
+        $this->Auth->allow(['display']);
+
+        
+    }
+
+    public function beforeFilter(Event $event){
+        //$this->Auth->config('authenticate', ['Form'=>['username'=>'email','password'=>'password']]);
+
     }
     
     
@@ -55,13 +90,15 @@ class AppController extends Controller
      * @return void
      */
 
-    public function beforeRender(Event $event)
-    {
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
-            ) {
-            $this->set('_serialize', true);
-    }
+
+
+   public function beforeRender(Event $event)
+   {
+    if (!array_key_exists('_serialize', $this->viewVars) &&
+        in_array($this->response->type(), ['application/json', 'application/xml'])
+        ) {
+        $this->set('_serialize', true);
+}
 }
 
 

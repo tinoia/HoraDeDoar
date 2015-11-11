@@ -19,11 +19,9 @@
     <head>
         <!-- page wrapper -->
        
-        <?php echo $this->element('navbartop'); ?> 
-        
-        <title>
-            <?= $this->fetch('poeijaseir') ?>
-        </title>
+        <?php echo $this->element('navbartop'); ?>
+
+
 
     </head>
     <body>

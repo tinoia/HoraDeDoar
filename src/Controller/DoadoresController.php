@@ -17,6 +17,13 @@ class DoadoresController extends AppController
      *
      * @return void
      */
+
+    public function beforeFilter(){
+        $this->alert;
+        
+
+    }
+
     public function index()
     {
         $this->set('doadores', $this->paginate($this->Doadores));
@@ -37,6 +44,11 @@ class DoadoresController extends AppController
         ]);
         $this->set('doadore', $doadore);
         $this->set('_serialize', ['doadore']);
+    }
+
+    public function login(){
+
+
     }
 
     /**

@@ -21,7 +21,7 @@ class UsersFixture extends TestFixture
         'name' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'email' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'password' => ['type' => 'string', 'length' => 45, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'type' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'type' => ['type' => 'string', 'length' => 12, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['iduser'], 'length' => []],
             'iduser_UNIQUE' => ['type' => 'unique', 'columns' => ['iduser'], 'length' => []],
@@ -29,7 +29,7 @@ class UsersFixture extends TestFixture
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'utf8_general_ci'
+            'collation' => 'latin1_swedish_ci'
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -45,7 +45,7 @@ class UsersFixture extends TestFixture
             'name' => 'Lorem ipsum dolor sit amet',
             'email' => 'Lorem ipsum dolor sit amet',
             'password' => 'Lorem ipsum dolor sit amet',
-            'type' => 1
+            'type' => 'Lorem ipsu'
         ],
     ];
 }

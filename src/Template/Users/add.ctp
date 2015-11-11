@@ -1,26 +1,3 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Add User') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('email');
-            echo $this->Form->input('password');
-            echo $this->Form->input('type');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
-
-
-
 <?php use Cake\Database\Connection;?>
 
 <div class="row">
@@ -44,10 +21,10 @@
              </div>
 
              <div class="form-group">
-                <?php  echo $this->Form->input('email',array('label'=>'Email','class'=>'form-control',)); ?>
+                <?php  echo $this->Form->input('email',array('label'=>'Email','class'=>'form-control','type'=>'email')); ?>
             </div>
             <div class="form-group">
-                <?php  echo $this->Form->input('password',array('label'=>'Senha','class'=>'form-control','type'=>'email')); ?>
+                <?php  echo $this->Form->input('password',array('label'=>'Senha','class'=>'form-control','type'=>'password')); ?>
             </div>
             <div class="form-group">
                 <?php  echo $this->Form->input('type',array('label' => 'Tipo', 'options'=> array('Doador','Instituição'))); ?>

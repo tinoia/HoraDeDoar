@@ -58,9 +58,7 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
-            ->add('type', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
+            ->allowEmpty('type');
 
         return $validator;
     }
