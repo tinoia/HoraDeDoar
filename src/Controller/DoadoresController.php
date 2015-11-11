@@ -18,12 +18,6 @@ class DoadoresController extends AppController
      * @return void
      */
 
-    public function beforeFilter(){
-        $this->alert;
-        
-
-    }
-
     public function index()
     {
         $this->set('doadores', $this->paginate($this->Doadores));

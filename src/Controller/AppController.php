@@ -39,11 +39,12 @@ class AppController extends Controller
      *
      * @return void
      */
+    
+
     public function initialize()
     {
         parent::initialize();
         $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'authenticate' => [
@@ -64,9 +65,8 @@ class AppController extends Controller
                 'home'
             ],
             'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
+                'controller' => 'Users',
+                'action' => 'login'
             ]
         ]);
         // Permite a ação display, assim nosso pages controller

@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-6">
-                <?php echo $this->Form->create('Users'); ?>
+            <?php echo $this->Form->create('Users'); ?>
             <div class="form-group">
                     <?php  echo $this->Form->input('name',array('label'=>'Nome completo','class'=>'form-control')); ?>
              </div>

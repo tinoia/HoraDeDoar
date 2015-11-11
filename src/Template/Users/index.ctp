@@ -32,6 +32,7 @@
                         <td><?= h($user->name) ?></td>
                         <td><?= h($user->email) ?></td>
                         <td><?= h($user->password) ?></td>
+                        <td><?= h($user->type)  ?></td>
                         
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->iduser]) ?>

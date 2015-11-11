@@ -20,16 +20,12 @@
         <!-- page wrapper -->
        
         <?php echo $this->element('navbartop'); ?>
-
-
-
     </head>
     <body>
-        
         <!--  wrapper -->
         <div id="wrapper">
-            
-            <?php echo $this->element('navbarside'); ?> 
+                <?php //echo $this->Auth->User('type'); ?>
+                <?php echo $this->element('navbarside'); ?>
         </div>
         <!-- end wrapper -->
 

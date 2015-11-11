@@ -20,7 +20,7 @@ class UsersController extends AppController
     public function beforeFilter(\Cake\Event\Event $event)
     {
         $this->Auth->allow('add');
-        $this->Auth->allow('index');
+
     }
 
      public function index()
@@ -94,7 +94,7 @@ class UsersController extends AppController
     }
 
     public function login() {
-
+        $this->viewBuilder()->layout('login');
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
@@ -107,6 +107,7 @@ class UsersController extends AppController
 
     public function logout() {
         $this->redirect($this->Auth->logout());
+        
     }
 }
 

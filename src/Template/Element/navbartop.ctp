@@ -11,9 +11,12 @@
         <!-- main dropdown -->
 
 
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-bell fa-3x"></i>
+        <li >
+            <?php 
+            $session = $this->request->session();
+            $usuarioLogado = $session->read('Auth.User.name');
+            echo 'Você está logado como: '.$usuarioLogado;
+            ?>
         </a>
 
 
@@ -33,7 +36,7 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                <li><a href=<?php echo $this->Url->build('/Users/logout') ?>><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                 </li>
             </ul>
             <!-- end dropdown-user -->
