@@ -1,6 +1,6 @@
 
 <?php use Cake\Database\Connection;?>
-
+<?php $this->layout = 'login' ?>
 <div class="row">
     <!-- Page Header -->
     <div class="col-lg-12">

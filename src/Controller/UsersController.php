@@ -39,12 +39,24 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
+            debug($user);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('Unable to add the user.'));
         }
+        $this->set('user', $user);
+    }
+
+    public function addModified($novo)
+    {
+        $user = $novo;
+        if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['action' => 'add']);
+            }
+            $this->Flash->error(__('Unable to add the user.'));
         $this->set('user', $user);
     }
 
@@ -108,6 +120,18 @@ class UsersController extends AppController
     public function logout() {
         $this->redirect($this->Auth->logout());
         
+    }
+
+    public function opcao(){
+
+        
+    }
+
+    public function getID($email) {
+        $query = $this->Users->find('all', [
+            'conditions' => ['email' => $email]
+        ]);
+        return $query->first()->iduser;
     }
 }
 

@@ -21,7 +21,7 @@
                         <br>
                         <?= $this->Form->submit(_('Entrar'), array('class' => 'btn btn-lg btn-success btn-block')) ?>
                         <br>
-                        <a href="http://localhost/HoraDeDoar/Users/add" class="btn btn-lg btn-success btn-block">Cadastrar</a>
+                        <a href="http://localhost/HoraDeDoar/Users/opcao" class="btn btn-lg btn-success btn-block">Cadastrar</a>
                         <?= $this->Form->end() ?>  
                     </div>
                 </div>

@@ -15,6 +15,7 @@
             <?php 
             $session = $this->request->session();
             $usuarioLogado = $session->read('Auth.User.name');
+            $idUsuario = $session->read('Auth.User.iduser');
             echo 'Você está logado como: '.$usuarioLogado;
             ?>
         </a>
@@ -31,9 +32,9 @@
             </a>
             <!-- dropdown user-->
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
+                <li><a href=<?php echo $this->Url->build('/Users/view/'.$idUsuario) ?>><i class="fa fa-user fa-fw"></i>Minha conta</a>
                 </li>
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
+                <li><a href=<?php echo $this->Url->build('/Users/edit/'.$idUsuario) ?>><i class="fa fa-gear fa-fw"></i>Alterar dados</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href=<?php echo $this->Url->build('/Users/logout') ?>><i class="fa fa-sign-out fa-fw"></i>Logout</a>
