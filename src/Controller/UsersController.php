@@ -53,8 +53,7 @@ class UsersController extends AppController
     {
         $user = $novo;
         if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'add']);
+                return true;
             }
             $this->Flash->error(__('Unable to add the user.'));
         $this->set('user', $user);

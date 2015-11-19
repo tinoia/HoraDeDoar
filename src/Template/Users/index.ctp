@@ -47,7 +47,7 @@
     </div>
     <div class="panel-footer">
         <a href="/HoraDeDoar/users/add" class="btn btn-info" role="button">Adicionar Novo</a>
-        <a href="/HoraDeDoar" class="btn btn-info" role="button">Voltar</a>
+        <a href="/HoraDeDoar/instituicoes" class="btn btn-info" role="button">Voltar</a>
     </div>
 
     <div>   

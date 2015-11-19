@@ -48,7 +48,6 @@ class InstituicoesController extends AppController
      */
     public function add()
     {
-        $connection = ConnectionManager::get('default');
         $instituico = $this->Instituicoes->newEntity();
         $UsersController = new UsersController();
         $user = new User();
@@ -65,7 +64,7 @@ class InstituicoesController extends AppController
                 $instituico->users_iduser = $query;
                 
                 if ($this->Instituicoes->save($instituico)) {
-                    $this->Flash->success(__('The instituico has been saved.'));
+                    $this->Flash->success(__('Cadastro efetuado com sucesso.'));
                     return $this->redirect(['controller' => 'Users','action' => 'login']);
                 } else {
                     $this->Flash->error(__('The instituico could not be saved. Please, try again.'));

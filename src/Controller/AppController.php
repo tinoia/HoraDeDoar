@@ -60,9 +60,9 @@ class AppController extends Controller
                 'action' => 'login'
             ],
             'loginRedirect' =>  [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
+                'controller' => 'Instituicoes',
+                'action' => 'index'
+                
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
@@ -72,6 +72,8 @@ class AppController extends Controller
         // Permite a ação display, assim nosso pages controller
         // continua a funcionar.
         $this->Auth->allow(['display']);
+        $this->Auth->allow(['opcao']);
+        $this->Auth->allow(['add']);
 
         
     }
