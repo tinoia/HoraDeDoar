@@ -22,6 +22,11 @@ class DoacoesController extends AppController
         $this->set('_serialize', ['doacoes']);
     }
 
+    public function dashboard()
+    {
+
+    }
+
     /**
      * View method
      *
@@ -33,7 +38,7 @@ class DoacoesController extends AppController
     {
         $doaco = $this->Doacoes->get($id, [
             'contain' => []
-        ]);
+            ]);
         $this->set('doaco', $doaco);
         $this->set('_serialize', ['doaco']);
     }
@@ -43,11 +48,12 @@ class DoacoesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function addDinheiro()
     {
         $doaco = $this->Doacoes->newEntity();
         if ($this->request->is('post')) {
             $doaco = $this->Doacoes->patchEntity($doaco, $this->request->data);
+            debug($doaco);
             if ($this->Doacoes->save($doaco)) {
                 $this->Flash->success(__('The doaco has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -58,6 +64,8 @@ class DoacoesController extends AppController
         $this->set(compact('doaco'));
         $this->set('_serialize', ['doaco']);
     }
+
+    
 
     /**
      * Edit method
@@ -70,7 +78,7 @@ class DoacoesController extends AppController
     {
         $doaco = $this->Doacoes->get($id, [
             'contain' => []
-        ]);
+            ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $doaco = $this->Doacoes->patchEntity($doaco, $this->request->data);
             if ($this->Doacoes->save($doaco)) {

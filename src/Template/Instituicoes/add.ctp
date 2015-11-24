@@ -17,7 +17,7 @@
                                 <?php  echo $this->Form->input('nome_instituicoes',array('label'=>'Nome da instituição','class'=>'form-control')); ?>
                             </div>
                             <div class="form-group">
-                                <?php  echo $this->Form->input('email_instituicoes',array('label'=>'Email','class'=>'form-control')); ?>
+                                <?php  echo $this->Form->input('email_instituicoes',array('label'=>'Email','class'=>'form-control','type'=>'email')); ?>
                             </div>
                             <div class="form-group">
                                 <?php  echo $this->Form->input('senha_instituicoes',array('label'=>'Senha','class'=>'form-control','type'=>'password')); ?>
@@ -43,13 +43,11 @@
                             <div class="form-group">
                                 <?php  echo $this->Form->input('numero_voluntario_instituicoes',array('label'=>'Número de voluntários','class'=>'form-control')); ?>
                             </div>
-                            <div class="form-group">
-                                <?php  echo $this->Form->input('projeto_instituicoes',array('label'=>'Projeto','class'=>'form-control')); ?>
-                            </div>
+                            
                             <div class="panel-footer">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 <button type="reset" class="btn btn-success">Limpar</button>
-                                <a href="/HoraDeDoar/instituicoes" class="btn btn-info" role="button">Voltar</a>
+                                <a href="/HoraDeDoar" class="btn btn-info" role="button" >Voltar</a>
                                 <?php echo $this->Form->end(); ?> 
                             </div>
                         </div>

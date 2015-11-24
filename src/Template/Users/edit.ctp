@@ -10,15 +10,15 @@
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
-<div class="users form large-9 medium-8 columns content">
+<div class="panel panel-primary">
     <?= $this->Form->create($user) ?>
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
         <?php
             echo $this->Form->input('name');
-            echo $this->Form->input('email');
+            echo $this->Form->input('email',array('type' => 'hidden'));
             echo $this->Form->input('password');
-            echo $this->Form->input('type');
+            echo $this->Form->input('type',array('type' => 'hidden'));
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
