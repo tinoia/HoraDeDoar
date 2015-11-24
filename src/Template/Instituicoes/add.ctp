@@ -43,11 +43,31 @@
                             <div class="form-group">
                                 <?php  echo $this->Form->input('numero_voluntario_instituicoes',array('label'=>'Número de voluntários','class'=>'form-control')); ?>
                             </div>
-                            
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('cep_instituicoes',array('label'=>'CEP','class'=>'form-control')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('estado_instituicoes',array('label'=>'Estado','class'=>'form-control')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('cidade_instituicoes',array('label'=>'Cidade','class'=>'form-control')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('bairro_instituicoes',array('label'=>'Bairro','class'=>'form-control')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('rua_instituicoes',array('label'=>'Projeto','class'=>'form-control')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('numero_instituicoes',array('label'=>'Numero','class'=>'form-control')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php  echo $this->Form->input('complemento_instituicoes',array('label'=>'Complemento','class'=>'form-control')); ?>
+                            </div>
                             <div class="panel-footer">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 <button type="reset" class="btn btn-success">Limpar</button>
-                                <a href="/HoraDeDoar" class="btn btn-info" role="button" >Voltar</a>
+                                <a href="/HoraDeDoar/instituicoes" class="btn btn-info" role="button" >Voltar</a>
                                 <?php echo $this->Form->end(); ?> 
                             </div>
                         </div>

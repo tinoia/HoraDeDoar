@@ -53,6 +53,10 @@ class InstituicoesController extends AppController
         $instituico = $this->Instituicoes->newEntity();
         $UsersController = new UsersController();
         $user = new User();
+        $EnderecosController = new EnderecosController();
+        $endereco = new Endereco();
+        
+
         if ($this->request->is('post')) {
             $instituico = $this->Instituicoes->patchEntity($instituico, $this->request->data);
 
@@ -60,21 +64,36 @@ class InstituicoesController extends AppController
             $user->email = $instituico->email_instituicoes;
             $user->password = $instituico->senha_instituicoes;
             $user->type = "Instituição";
-            
+
+            $endereco->cep_enderecos = $instituico->cep_instituicoes;
+            $endereco->estado_enderecos = $instituico->estado_instituicoes;
+            $endereco->cidade_enderecos = $instituico->cidade_instituicoes;
+            $endereco->bairro_enderecos = $instituico->bairro_instituicoes;
+            $endereco->rua_enderecos = $instituico->rua_instituicoes;
+            $endereco->numero_enderecos = $instituico->numero_instituicoes;
+            $endereco->complemento_enderecos = $instituico->complemento_instituicoes;
+
+
             if($UsersController->addModified($user)){
-                $query = $UsersController->getID($user->email);
-                $instituico->users_iduser = $query;
+                $idUser = $UsersController->getID($user->email);
+                $instituico->users_iduser = $idUser;
                 
-                if ($this->Instituicoes->save($instituico)) {
-                    $this->Flash->success(__('Cadastro efetuado com sucesso.'));
-                    return $this->redirect(['controller' => 'Users','action' => 'login']);
-                } else {
-                    $this->Flash->error(__('The instituico could not be saved. Please, try again.'));
+                if($EnderecosController->addModified($endereco)){
+                    $idEndereco = $EnderecosController->getID($endereco->cep_enderecos);
+                    $instituico->id_enderecos = $idEndereco;
+
+                    if ($this->Instituicoes->save($instituico)) {
+                        $this->Flash->success(__('Cadastro efetuado com sucesso.'));
+                        return $this->redirect(['controller' => 'Users','action' => 'login']);
+                    } else {
+                        $this->Flash->error(__('The instituico could not be saved. Please, try again.'));
+                    }
                 }
             }
         }
         $this->set(compact('instituico'));
         $this->set('_serialize', ['instituico']);
+        
     }
 
     /**
@@ -121,43 +140,43 @@ class InstituicoesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-   
+
 
     public function dashboard()
     {
 
     //conect banco
-    $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
-    mysql_select_db("novo", $conecta);
-    
-   
-    $doadores=mysql_query("SELECT COUNT(id_doadores) FROM doadores");
-    $doadores=mysql_fetch_assoc($doadores);
-    
-    $instituicao=mysql_query("SELECT COUNT(id_instituicoes) FROM instituicoes");
-    $instituicao=mysql_fetch_assoc($instituicao);
+        $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+        mysql_select_db("novo", $conecta);
 
-    $valor=mysql_query("SELECT SUM(valor_doacoes)FROM doacoes WHERE confirmacao_doacoes = '1'");
-    $valor=mysql_fetch_assoc($valor);
-    
-    $maior=mysql_query("SELECT MAX(valor_doacoes) FROM doacoes;");
-    $maior=mysql_fetch_assoc($maior);
-    
-    $mim=mysql_query("SELECT MIN(valor_doacoes) FROM doacoes");
-    $mim=mysql_fetch_assoc($mim);
-    
+
+        $doadores=mysql_query("SELECT COUNT(id_doadores) FROM doadores");
+        $doadores=mysql_fetch_assoc($doadores);
+
+        $instituicao=mysql_query("SELECT COUNT(id_instituicoes) FROM instituicoes");
+        $instituicao=mysql_fetch_assoc($instituicao);
+
+        $valor=mysql_query("SELECT SUM(valor_doacoes)FROM doacoes WHERE confirmacao_doacoes = '1'");
+        $valor=mysql_fetch_assoc($valor);
+
+        $maior=mysql_query("SELECT MAX(valor_doacoes) FROM doacoes;");
+        $maior=mysql_fetch_assoc($maior);
+
+        $mim=mysql_query("SELECT MIN(valor_doacoes) FROM doacoes");
+        $mim=mysql_fetch_assoc($mim);
+
     // for date
-    $dataAtual = date("Y-m-d");
-    
-    $valordia=mysql_query("SELECT SUM(valor_doacoes)FROM doacoes WHERE confirmacao_doacoes = '1' AND data_doacoes = '$dataAtual'");
-    $valordia=mysql_fetch_assoc($valordia);
-    
-    $maiordia=mysql_query("SELECT MAX(valor_doacoes) FROM doacoes where data_doacoes = '$dataAtual'");
-    $maiordia=mysql_fetch_assoc($maiordia);
-    
-    $mimdia=mysql_query("SELECT MIN(valor_doacoes) FROM doacoes where data_doacoes = '$dataAtual'");
-    $mimdia=mysql_fetch_assoc($mimdia);
-    
+        $dataAtual = date("Y-m-d");
+
+        $valordia=mysql_query("SELECT SUM(valor_doacoes)FROM doacoes WHERE confirmacao_doacoes = '1' AND data_doacoes = '$dataAtual'");
+        $valordia=mysql_fetch_assoc($valordia);
+
+        $maiordia=mysql_query("SELECT MAX(valor_doacoes) FROM doacoes where data_doacoes = '$dataAtual'");
+        $maiordia=mysql_fetch_assoc($maiordia);
+
+        $mimdia=mysql_query("SELECT MIN(valor_doacoes) FROM doacoes where data_doacoes = '$dataAtual'");
+        $mimdia=mysql_fetch_assoc($mimdia);
+
     }
 
 }

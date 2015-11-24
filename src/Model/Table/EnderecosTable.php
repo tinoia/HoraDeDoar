@@ -64,7 +64,7 @@ class EnderecosTable extends Table
             ->allowEmpty('complemento_enderecos');
 
         $validator
-            ->allowEmpty('mapa_endereços');
+            ->allowEmpty('mapa_enderecos');
 
         return $validator;
     }

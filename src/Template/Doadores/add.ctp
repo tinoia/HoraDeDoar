@@ -25,6 +25,27 @@
                         <div class="form-group">
                             <?php  echo $this->Form->input('senha_doadores',array('label'=>'Senha','class'=>'form-control','type'=>'password')); ?>
                         </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('cep_doadores',array('label'=>'CEP','class'=>'form-control')); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('estado_doadores',array('label'=>'Estado','class'=>'form-control')); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('cidade_doadores',array('label'=>'Cidade','class'=>'form-control')); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('bairro_doadores',array('label'=>'Bairro','class'=>'form-control')); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('rua_doadores',array('label'=>'Projeto','class'=>'form-control')); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('numero_doadores',array('label'=>'Numero','class'=>'form-control')); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php  echo $this->Form->input('complemento_doadores',array('label'=>'Complemento','class'=>'form-control')); ?>
+                        </div>
 
                         <div class="panel-footer">
                             <button type="submit" class="btn btn-primary">Cadastrar</button>

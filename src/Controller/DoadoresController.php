@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use App\Controller\UsersController;
 use App\Model\Entity\User;
+use App\Controller\EnderecosController;
+use App\Model\Entity\Endereco;
 use Cake\DataSource\ConnectionManager;
 
 /**
@@ -58,6 +60,9 @@ class DoadoresController extends AppController
         $doadore = $this->Doadores->newEntity();
         $UsersController = new UsersController();
         $user = new User();
+        $EnderecosController = new EnderecosController();
+        $endereco = new Endereco();
+
         if ($this->request->is('post')) {
             $doadore = $this->Doadores->patchEntity($doadore, $this->request->data);
             
@@ -66,15 +71,29 @@ class DoadoresController extends AppController
             $user->password = $doadore->senha_doadores;
             $user->type = "Doador";
 
-            if($UsersController->addModified($user)){
-                $query = $UsersController->getID($user->email);
-                $doadore->users_iduser = $query;
+            $endereco->cep_enderecos = $doadore->cep_doadores;
+            $endereco->estado_enderecos = $doadore->estado_doadores;
+            $endereco->cidade_enderecos = $doadore->cidade_doadores;
+            $endereco->bairro_enderecos = $doadore->bairro_doadores;
+            $endereco->rua_enderecos = $doadore->rua_doadores;
+            $endereco->numero_enderecos = $doadore->numero_doadores;
+            $endereco->complemento_enderecos = $doadore->complemento_doadores;
 
-                if ($this->Doadores->save($doadore)) {
-                    $this->Flash->success(__('Cadastro efetuado com sucesso.'));
-                    return $this->redirect(['controller' => 'Users','action' => 'login']);
-                } else {
-                    $this->Flash->error(__('The doadore could not be saved. Please, try again.'));
+
+            if($UsersController->addModified($user)){
+                $idUser = $UsersController->getID($user->email);
+                $doadore->users_iduser = $idUser;
+
+                if($EnderecosController->addModified($endereco)){
+                    $idEndereco = $EnderecosController->getID($endereco->cep_enderecos);
+                    $doadore->id_enderecos = $idEndereco;
+
+                    if ($this->Doadores->save($doadore)) {
+                        $this->Flash->success(__('Cadastro efetuado com sucesso.'));
+                        return $this->redirect(['controller' => 'Users','action' => 'login']);
+                    } else {
+                        $this->Flash->error(__('The doadore could not be saved. Please, try again.'));
+                    }
                 }
             }
         }

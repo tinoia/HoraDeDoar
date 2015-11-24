@@ -59,6 +59,24 @@ class EnderecosController extends AppController
         $this->set('_serialize', ['endereco']);
     }
 
+    public function addModified($novo)
+    {
+        $endereco = $novo;
+        if ($this->Enderecos->save($endereco)) {
+                return true;
+            }
+            $this->Flash->error(__('Unable to add the endereco.'));
+        $this->set('endereco', $endereco);
+    }
+
+
+    public function getID($cep) {
+        $query = $this->Enderecos->find('all', [
+            'conditions' => ['cep_enderecos' => $cep]
+        ]);
+        return $query->first()->id_enderecos;
+    }
+
     /**
      * Edit method
      *

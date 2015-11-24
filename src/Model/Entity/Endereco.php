@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  * @property string $rua_enderecos
  * @property string $numero_enderecos
  * @property string $complemento_enderecos
- * @property string $mapa_endereços
+ * @property string $mapa_enderecos
  */
 class Endereco extends Entity
 {
