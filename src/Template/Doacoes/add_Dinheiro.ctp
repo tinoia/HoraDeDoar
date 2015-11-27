@@ -23,13 +23,14 @@
                 <?php
                 $session = $this->request->session();
                 $idUsuario = $session->read('Auth.User.iduser');
-                $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
-                mysql_select_db("novo", $conecta);
+                $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
+                mysql_select_db("banco_hdd", $conecta);
                 $sql = "SELECT * FROM doadores where users_iduser = $idUsuario";
                 $qr  = mysql_query($sql) or die(mysql_error());
                 $ln = mysql_fetch_assoc($qr);
                 $idUsuario = $ln['id_doadores'];
-                echo $this->Form->input('id_doadores',array('type' => 'hidden','value' => $idUsuario, 'class'=>'form-control')); ?>
+                echo $this->Form->input('id_doadores',array('type' => 'hidden','value' => $idUsuario, 'class'=>'form-control')); 
+                echo $this->Form->input('confirmacao_doacoes',array('type' => 'hidden','value' => 0, 'class'=>'form-control')); ?>
             </div>
             <div class="form-group">
                 <?php

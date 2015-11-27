@@ -2,7 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use App\Controller\InstituicoesCotroller;
+use App\Controller\DoadoresController;
 /**
  * Users Controller
  *
@@ -20,6 +21,7 @@ class UsersController extends AppController
     public function beforeFilter(\Cake\Event\Event $event)
     {
         $this->Auth->allow('add');
+        
 
     }
 

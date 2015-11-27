@@ -47,7 +47,6 @@ class DoadoresController extends AppController
 
     public function login(){
 
-
     }
 
     /**
@@ -172,5 +171,12 @@ class DoadoresController extends AppController
             $this->Flash->error(__('The doadore could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function getbyIdUser($idUser) {
+        $query = $this->Doadores->find('all', [
+            'conditions' => ['users_iduser' => $idUser]
+        ]);
+        return $query->first()->id_doadores;
     }
 }

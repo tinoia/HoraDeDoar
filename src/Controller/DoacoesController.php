@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Controller\InstituicoesCotroller;
 
 /**
  * Doacoes Controller
@@ -16,9 +17,25 @@ class DoacoesController extends AppController
      *
      * @return void
      */
+
+
+           
     public function index()
+
     {
-        $this->set('doacoes', $this->paginate($this->Doacoes));
+        $session = $this->request->session();
+        $tipoUsuario = $session->read('Auth.User.type');
+        $idUsuario = $session->read('Auth.User.iduser');
+            if($tipoUsuario=="Doador"){
+                $DoadoresController = new DoadoresController();
+                $idUsuarioAtual = $DoadoresController->getbyIdUser($idUsuario);
+                $query = $this->Doacoes->find('all')->where(['id_doadores' => $idUsuarioAtual]);
+            } else{
+                $InstituicoesCotroller = new InstituicoesConstroller();
+                $idUsuarioAtual = $InstituicoesCotroller->getbyIdUser($idUsuario);
+                $query = $this->Doacoes->find('all')->where(['id_instituicoes' => 8]);
+            }
+        $this->set('doacoes', $this->paginate($query));
         $this->set('_serialize', ['doacoes']);
     }
 
@@ -53,7 +70,6 @@ class DoacoesController extends AppController
         $doaco = $this->Doacoes->newEntity();
         if ($this->request->is('post')) {
             $doaco = $this->Doacoes->patchEntity($doaco, $this->request->data);
-            debug($doaco);
             if ($this->Doacoes->save($doaco)) {
                 $this->Flash->success(__('The doaco has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -110,4 +126,10 @@ class DoacoesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function getNomeInstituicao($id){
+        $InstituicoesController = new InstituicoesController();
+        return $InstituicoesController->getNameById($id);
+    }
+    
 }

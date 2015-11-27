@@ -140,6 +140,20 @@ class InstituicoesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function getbyIdUser($idUser) {
+        $query = $this->Instituicoes->find('all', [
+            'conditions' => ['users_iduser' => $idUser]
+        ]);
+        return $query->first()->id_instituicoes;
+    }
+
+    public function getNomeByID($id) {
+        $query = $this->Instituicoes->find('all', [
+            'conditions' => ['id_instituicoes' => $id]
+        ]);
+        return $query->first()->nome_instituicoes;
+    }
+
 
 
     public function dashboard()

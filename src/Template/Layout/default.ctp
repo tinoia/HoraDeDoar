@@ -18,14 +18,23 @@
     <?php echo $this->element('head'); ?> 
     <head>
         <!-- page wrapper -->
-       
-        <?php echo $this->element('navbartop'); ?>
+        <?php        
+        echo $this->element('navbartop'); 
+        ?>
+        
+
     </head>
     <body>
         <!--  wrapper -->
         <div id="wrapper">
-                <?php //echo $this->Auth->User('type'); ?>
-                <?php echo $this->element('navbarside'); ?>
+                <?php 
+                 $session = $this->request->session();
+                $tipoUsuario = $session->read('Auth.User.type');
+                if($tipoUsuario=="Doador"){
+                    echo $this->element('navbarsideDoador'); 
+                } else{
+                echo $this->element('navbarsideInstituicao');
+            }?>
         </div>
         <!-- end wrapper -->
 
