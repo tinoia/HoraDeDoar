@@ -62,6 +62,10 @@ class DoacoesTable extends Table
             ->add('id_instituicoes', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id_instituicoes');
 
+        $validator
+            ->add('data_doacoes', 'valid', ['rule' => 'datetime'])
+            ->allowEmpty('data_doacoes');
+
         return $validator;
     }
 }

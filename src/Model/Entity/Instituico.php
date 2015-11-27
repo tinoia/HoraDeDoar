@@ -42,4 +42,8 @@ class Instituico extends Entity
     {
         return (new DefaultPasswordHasher)->hash($password);
     }
+
+    public function getAll (){
+        return $this->find('all');        
+    }
 }

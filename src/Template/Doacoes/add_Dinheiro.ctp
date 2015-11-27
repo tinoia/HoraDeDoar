@@ -2,29 +2,37 @@
 
 <div class="row">
     <!-- Page Header -->
-    <div class="col-lg-12">
+    <div class="col-lg-4">
         <h1 class="page-header">Efetuar doação em dinheiro</h1>
     </div>
     <!--End Page Header -->
 </div>
 
-<div class="panel panel-primary">
+
+
+<div class="panel panel-primary col-lg-4">
     <div class="panel-heading">
         Informe os dados para doação:
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
             <?php echo $this->Form->create('Doacoes'); ?>
             <div class="form-group">
-                    <?php  echo $this->Form->input('valor_doacoes',array('label'=>'Valor da doação','type' => 'money','class'=>'form-control')); ?>
+                    
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">$</span>
+                            <?php  echo $this->Form->input('valor_doacoes',array('label'=>'','class'=>'form-control')); ?>
+                        <span class="input-group-addon">.00</span>
+                    </div>
+
             </div>
             <div class="form-group">
                 <?php
                 $session = $this->request->session();
                 $idUsuario = $session->read('Auth.User.iduser');
-                $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
-                mysql_select_db("banco_hdd", $conecta);
+                $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+                mysql_select_db("novo", $conecta);
                 $sql = "SELECT * FROM doadores where users_iduser = $idUsuario";
                 $qr  = mysql_query($sql) or die(mysql_error());
                 $ln = mysql_fetch_assoc($qr);
@@ -35,7 +43,12 @@
             <div class="form-group">
                 <?php
                 $idInstituicao = $_GET['id'];
-                echo $this->Form->input('id_instituicoes',array('type' => 'hidden','value' => $idInstituicao, 'class'=>'form-control')); ?>
+                $dataHoje = date('Y-m-d H:i:s');
+                
+                echo $this->Form->input('id_instituicoes',array('type' => 'hidden','value' => $idInstituicao , 'class'=>'form-control')); 
+                echo $this->Form->input('data_doacoes',array('type' => 'text','value' => $dataHoje, 'class'=>'form-control')); 
+                ?>
+
             </div>
             <div class="form-group">
                 <?php echo $this->Form->label('Doação anônima');?>

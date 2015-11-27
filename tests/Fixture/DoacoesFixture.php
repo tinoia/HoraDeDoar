@@ -23,6 +23,7 @@ class DoacoesFixture extends TestFixture
         'anonima_doacoes' => ['type' => 'integer', 'length' => 1, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'id_doadores' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'id_instituicoes' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'data_doacoes' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
             'FK_doacao' => ['type' => 'index', 'columns' => ['id_doadores'], 'length' => []],
             'FK_doacao2' => ['type' => 'index', 'columns' => ['id_instituicoes'], 'length' => []],
@@ -51,7 +52,8 @@ class DoacoesFixture extends TestFixture
             'confirmacao_doacoes' => 1,
             'anonima_doacoes' => 1,
             'id_doadores' => 1,
-            'id_instituicoes' => 1
+            'id_instituicoes' => 1,
+            'data_doacoes' => '2015-11-27 03:10:49'
         ],
     ];
 }

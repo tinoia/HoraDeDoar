@@ -27,6 +27,8 @@ class InstituicoesController extends AppController
         $this->set('_serialize', ['instituicoes']);
     }
 
+
+
     /**
      * View method
      *
@@ -154,13 +156,21 @@ class InstituicoesController extends AppController
         return $query->first()->nome_instituicoes;
     }
 
+    public function getAllNames() {
+        $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+        mysql_select_db("novo", $conecta);
+        $todos = mysql_query("SELECT (nome_instituicoes) FROM instituicoes");
+
+        return $todos;
+    }
+
 
 
     public function dashboard()
     {
 
     //conect banco
-        $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+        $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
         mysql_select_db("novo", $conecta);
 
 

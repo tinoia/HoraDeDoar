@@ -21,11 +21,11 @@
 
   <?php
     // conecta banco
-  $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
-  mysql_select_db("banco_hdd", $conecta);
+  $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+  mysql_select_db("novo", $conecta);
   
     //A quantidade de valor a ser exibida
-  $quantidade = 5;
+  $quantidade = 4;
     //a pagina atual
   $pagina     = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
     //Calcula a pagina de qual valor será exibido
@@ -39,7 +39,7 @@
     //Percorre os campos da tabela
   while($ln = mysql_fetch_assoc($qr)){?>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-3">
       <!--Pill Tabs   -->
       <div class="panel panel-default">
         <div class="panel-heading">

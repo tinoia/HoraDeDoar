@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use App\Controller\InstituicoesCotroller;
+use App\Controller\InstituicoesController;
 
 /**
  * Doacoes Controller
@@ -26,14 +26,15 @@ class DoacoesController extends AppController
         $session = $this->request->session();
         $tipoUsuario = $session->read('Auth.User.type');
         $idUsuario = $session->read('Auth.User.iduser');
-            if($tipoUsuario=="Doador"){
+        
+        if($tipoUsuario=="Doador"){
                 $DoadoresController = new DoadoresController();
                 $idUsuarioAtual = $DoadoresController->getbyIdUser($idUsuario);
                 $query = $this->Doacoes->find('all')->where(['id_doadores' => $idUsuarioAtual]);
             } else{
-                $InstituicoesCotroller = new InstituicoesConstroller();
-                $idUsuarioAtual = $InstituicoesCotroller->getbyIdUser($idUsuario);
-                $query = $this->Doacoes->find('all')->where(['id_instituicoes' => 8]);
+                $InstituicoesController = new InstituicoesController();
+                $idUsuarioAtual = $InstituicoesController->getbyIdUser($idUsuario);
+                $query = $this->Doacoes->find('all')->where(['id_instituicoes' => $idUsuarioAtual]);
             }
         $this->set('doacoes', $this->paginate($query));
         $this->set('_serialize', ['doacoes']);
@@ -127,9 +128,5 @@ class DoacoesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function getNomeInstituicao($id){
-        $InstituicoesController = new InstituicoesController();
-        return $InstituicoesController->getNameById($id);
-    }
-    
+
 }
