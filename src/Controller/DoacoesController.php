@@ -128,5 +128,26 @@ class DoacoesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function confirmarPagamento($id = null){
+        $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
+        mysql_select_db("banco_hdd", $conecta);
+        $sql = "update doacoes set confirmacao_doacoes=1 where id_doacoes=$id";
+        $qr  = mysql_query($sql) or die(mysql_error());
+        
+        return $this->redirect(['action' => 'index']);
+
+    }
+
+    public function recusarPagamento($id = null){
+        $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
+        mysql_select_db("banco_hdd", $conecta);
+        $sql = "update doacoes set confirmacao_doacoes=2 where id_doacoes=$id";
+        $qr  = mysql_query($sql) or die(mysql_error());
+        
+        return $this->redirect(['action' => 'index']);
+
+    }
+
+
 
 }

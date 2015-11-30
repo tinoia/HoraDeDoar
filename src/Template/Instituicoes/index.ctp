@@ -21,8 +21,8 @@
 
   <?php
     // conecta banco
-  $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
-  mysql_select_db("novo", $conecta);
+  $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
+  mysql_select_db("banco_hdd", $conecta);
   
     //A quantidade de valor a ser exibida
   $quantidade = 4;
@@ -43,7 +43,9 @@
       <!--Pill Tabs   -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <?php echo $ln['nome_instituicoes'];?>
+            <center><h1>
+              <?php echo $ln['nome_instituicoes'];?>
+            </h1></center>
         </div>
         <div class="panel-body">
           <ul class="nav nav-pills">
