@@ -7,6 +7,8 @@ use App\Model\Entity\User;
 use App\Controller\EnderecosController;
 use App\Model\Entity\Endereco;
 use Cake\DataSource\ConnectionManager;
+use App\Model\Entity\InstituicoesHasTiposDoaco;
+use App\Controller\InstituicoesHasTiposDoacoesController;
 
 /**
  * Instituicoes Controller
@@ -23,11 +25,48 @@ class InstituicoesController extends AppController
      */
     public function index()
     {
+
         $this->set('instituicoes', $this->paginate($this->Instituicoes));
         $this->set('_serialize', ['instituicoes']);
     }
 
+    public function busca()
+    {
 
+    }
+
+    public function desejoReceber(){
+        $session = $this->request->session();
+        $usuarioLogado = $session->read('Auth.User.name');
+        $idUsuario = $session->read('Auth.User.iduser');
+        $idInstituicao = $this->getbyIdUser($idUsuario);
+
+        $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+        mysql_select_db("novo", $conecta);
+
+        //testa se ja foram criados os tipos de doacao com a id da instituicao
+        $count = mysql_query("SELECT * FROM instituicoes_has_tipos_doacoes WHERE id_instituicoes=$idInstituicao;");
+        if(mysql_num_rows($count)!=9){
+
+            for($i = 1 ; $i < 10 ; $i++){//se nao foram ainda, cria todos
+                mysql_query("INSERT into instituicoes_has_tipos_doacoes (id_instituicoes,id_tipos_doacoes) values ($idInstituicao,$i)");
+            }   
+        } else{ //caso contrario atualiza
+            for($i = 1 ; $i < 10 ; $i++){//se nao foram ainda, cria todos
+                $tipos = $this->request->data();
+                if(isset($tipos[$i])){
+                    if($tipos[$i]==1){
+                        mysql_query("UPDATE instituicoes_has_tipos_doacoes set checked=1 where (id_instituicoes=$idInstituicao and id_tipos_doacoes=$i)");
+                    } else{
+                        mysql_query("UPDATE instituicoes_has_tipos_doacoes set checked=0 where (id_instituicoes=$idInstituicao and id_tipos_doacoes=$i)");
+                    }
+
+                }
+            } 
+        }
+        
+
+    }
 
     /**
      * View method
@@ -45,13 +84,13 @@ class InstituicoesController extends AppController
         $this->set('_serialize', ['instituico']);
     }
 
-    /**
+     /**
      * Add method
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
+     public function add()
+     {
         $instituico = $this->Instituicoes->newEntity();
         $UsersController = new UsersController();
         $user = new User();
@@ -74,7 +113,6 @@ class InstituicoesController extends AppController
             $endereco->rua_enderecos = $instituico->rua_instituicoes;
             $endereco->numero_enderecos = $instituico->numero_instituicoes;
             $endereco->complemento_enderecos = $instituico->complemento_instituicoes;
-
 
             if($UsersController->addModified($user)){
                 $idUser = $UsersController->getID($user->email);
@@ -145,14 +183,14 @@ class InstituicoesController extends AppController
     public function getbyIdUser($idUser) {
         $query = $this->Instituicoes->find('all', [
             'conditions' => ['users_iduser' => $idUser]
-        ]);
+            ]);
         return $query->first()->id_instituicoes;
     }
 
     public function getNomeByID($id) {
         $query = $this->Instituicoes->find('all', [
             'conditions' => ['id_instituicoes' => $id]
-        ]);
+            ]);
         return $query->first()->nome_instituicoes;
     }
 
@@ -169,8 +207,7 @@ class InstituicoesController extends AppController
     public function dashboard()
     {
 
-    //conect banco
-        $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
+        $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
         mysql_select_db("novo", $conecta);
 
 
@@ -189,7 +226,7 @@ class InstituicoesController extends AppController
         $mim=mysql_query("SELECT MIN(valor_doacoes) FROM doacoes");
         $mim=mysql_fetch_assoc($mim);
 
-    // for date
+        // for date
         $dataAtual = date("Y-m-d");
 
         $valordia=mysql_query("SELECT SUM(valor_doacoes)FROM doacoes WHERE confirmacao_doacoes = '1' AND data_doacoes = '$dataAtual'");

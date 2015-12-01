@@ -31,8 +31,8 @@
                 <?php
                 $session = $this->request->session();
                 $idUsuario = $session->read('Auth.User.iduser');
-                $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
-                mysql_select_db("banco_hdd", $conecta);
+                $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+                mysql_select_db("novo", $conecta);
                 $sql = "SELECT * FROM doadores where users_iduser = $idUsuario";
                 $qr  = mysql_query($sql) or die(mysql_error());
                 $ln = mysql_fetch_assoc($qr);

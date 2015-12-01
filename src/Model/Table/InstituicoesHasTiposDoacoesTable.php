@@ -39,6 +39,10 @@ class InstituicoesHasTiposDoacoesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
+            ->add('checked', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('checked');
+
+        $validator
             ->add('id_instituicoes_tipos_doacoes', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id_instituicoes_tipos_doacoes', 'create');
 

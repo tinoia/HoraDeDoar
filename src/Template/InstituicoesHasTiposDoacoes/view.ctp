@@ -11,6 +11,10 @@
     <h3><?= h($instituicoesHasTiposDoaco->id_instituicoes_tipos_doacoes) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th><?= __('Checked') ?></th>
+            <td><?= $this->Number->format($instituicoesHasTiposDoaco->checked) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id Instituicoes Tipos Doacoes') ?></th>
             <td><?= $this->Number->format($instituicoesHasTiposDoaco->id_instituicoes_tipos_doacoes) ?></td>
         </tr>

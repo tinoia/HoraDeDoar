@@ -15,6 +15,7 @@
     <fieldset>
         <legend><?= __('Edit Instituicoes Has Tipos Doaco') ?></legend>
         <?php
+            echo $this->Form->input('checked');
             echo $this->Form->input('id_instituicoes');
             echo $this->Form->input('id_tipos_doacoes');
         ?>

@@ -17,6 +17,7 @@ class InstituicoesHasTiposDoacoesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
+        'checked' => ['type' => 'integer', 'length' => 1, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'id_instituicoes_tipos_doacoes' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'id_instituicoes' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'id_tipos_doacoes' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
@@ -43,6 +44,7 @@ class InstituicoesHasTiposDoacoesFixture extends TestFixture
      */
     public $records = [
         [
+            'checked' => 1,
             'id_instituicoes_tipos_doacoes' => 1,
             'id_instituicoes' => 1,
             'id_tipos_doacoes' => 1

@@ -21,8 +21,8 @@
 
   <?php
     // conecta banco
-  $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
-  mysql_select_db("banco_hdd", $conecta);
+  $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+  mysql_select_db("novo", $conecta);
   
     //A quantidade de valor a ser exibida
   $quantidade = 4;
@@ -36,10 +36,21 @@
     //Executa o SQL
   $qr  = mysql_query($sql) or die(mysql_error());
   
+  ?>
+  <form method="GET" action="Instituicoes/busca">
+  <label for="consulta">Buscar:</label>
+  <input type="text" id="consulta" name="consulta" maxlength="255" />
+
+  <input type="submit" value="OK" />
+
+  </form>
+  <br><br>
+  <?php
+
     //Percorre os campos da tabela
   while($ln = mysql_fetch_assoc($qr)){?>
-  <div class="row">
-    <div class="col-lg-3">
+  <div class="row col-lg-12">
+    <div class="col-lg-6">
       <!--Pill Tabs   -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -92,7 +103,7 @@
               <p> 
                <?php
                $id = $ln['id_instituicoes'];
-               $doacao = "SELECT tipos_doacoes FROM tipos_doacoes t INNER JOIN instituicoes_has_tipos_doacoes n ON t.id_tipos_doacoes = n.id_tipos_doacoes INNER JOIN instituicoes i ON n.id_instituicoes = i.id_instituicoes WHERE i.id_instituicoes=$id";
+               $doacao = "SELECT tipos_doacoes FROM tipos_doacoes t INNER JOIN instituicoes_has_tipos_doacoes n ON t.id_tipos_doacoes = n.id_tipos_doacoes INNER JOIN instituicoes i ON n.id_instituicoes = i.id_instituicoes WHERE i.id_instituicoes=$id and checked=1;";
                $re = mysql_query($doacao) or die(mysql_error());
                while($ri = mysql_fetch_assoc($re)){
                echo $ri['tipos_doacoes'];
@@ -131,6 +142,7 @@
   </div>
 </div>
 
+</div>
 
 
 <?php }?>

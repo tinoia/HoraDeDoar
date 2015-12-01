@@ -55,8 +55,8 @@ if($tipoUsuario=="Doador"){?>
                     } else  echo"Anônima";
                     ?></center></td>
                     <td><center><?php 
-                    $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
-                    mysql_select_db("banco_hdd", $conecta);
+                    $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+                    mysql_select_db("novo", $conecta);
                     $todos = mysql_query("SELECT (nome_instituicoes) FROM instituicoes WHERE id_instituicoes=$doaco->id_instituicoes");
                     $todos=mysql_fetch_assoc($todos);
                     echo $todos['nome_instituicoes'];
@@ -112,8 +112,8 @@ else {?>
                     <td><center><?= $this->Number->format($doaco->id_doacoes) ?></center></td>
 
                     <td ><center><?php if(h($doaco->anonima_doacoes)==0) {
-                         $conecta = mysql_connect("localhost", "root", "tineloco1") or print (mysql_error()); 
-                        mysql_select_db("banco_hdd", $conecta);
+                         $conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
+                         mysql_select_db("novo", $conecta);
                          $todos = mysql_query("SELECT (nome_doadores) FROM doadores WHERE id_doadores=$doaco->id_doadores");
                          $todos=mysql_fetch_assoc($todos);
                          echo $todos['nome_doadores'];

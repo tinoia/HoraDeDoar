@@ -38,7 +38,7 @@ limitations under the License.*/
 #page-wrapper {
     padding: 50px 15px;
     min-height: 568px;
-     background-color:rgb(209, 212, 216);
+    background-color:rgb(209, 212, 216);
 }
 
 
@@ -55,7 +55,7 @@ limitations under the License.*/
 
 /* Top Right Navigation Dropdown Styles */
 
- .navbar-top-links li {
+.navbar-top-links li {
     display: inline-block;
 }
 

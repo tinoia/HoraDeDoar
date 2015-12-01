@@ -6,6 +6,7 @@ use Cake\ORM\Entity;
 /**
  * InstituicoesHasTiposDoaco Entity.
  *
+ * @property int $checked
  * @property int $id_instituicoes_tipos_doacoes
  * @property int $id_instituicoes
  * @property int $id_tipos_doacoes

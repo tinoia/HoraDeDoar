@@ -61,9 +61,8 @@
                             <div class="form-group">
                                 <?php  echo $this->Form->input('numero_instituicoes',array('label'=>'Numero','class'=>'form-control')); ?>
                             </div>
-                            <div class="form-group">
-                                <?php  echo $this->Form->input('complemento_instituicoes',array('label'=>'Complemento','class'=>'form-control')); ?>
-                            </div>
+                            
+                            
                             <div class="panel-footer">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                                 <button type="reset" class="btn btn-success">Limpar</button>

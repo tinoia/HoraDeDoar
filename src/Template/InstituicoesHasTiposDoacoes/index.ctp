@@ -9,6 +9,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th><?= $this->Paginator->sort('checked') ?></th>
                 <th><?= $this->Paginator->sort('id_instituicoes_tipos_doacoes') ?></th>
                 <th><?= $this->Paginator->sort('id_instituicoes') ?></th>
                 <th><?= $this->Paginator->sort('id_tipos_doacoes') ?></th>
@@ -18,6 +19,7 @@
         <tbody>
             <?php foreach ($instituicoesHasTiposDoacoes as $instituicoesHasTiposDoaco): ?>
             <tr>
+                <td><?= $this->Number->format($instituicoesHasTiposDoaco->checked) ?></td>
                 <td><?= $this->Number->format($instituicoesHasTiposDoaco->id_instituicoes_tipos_doacoes) ?></td>
                 <td><?= $this->Number->format($instituicoesHasTiposDoaco->id_instituicoes) ?></td>
                 <td><?= $this->Number->format($instituicoesHasTiposDoaco->id_tipos_doacoes) ?></td>

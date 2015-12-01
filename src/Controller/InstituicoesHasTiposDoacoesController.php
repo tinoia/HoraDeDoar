@@ -43,20 +43,10 @@ class InstituicoesHasTiposDoacoesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($novo)
     {
-        $instituicoesHasTiposDoaco = $this->InstituicoesHasTiposDoacoes->newEntity();
-        if ($this->request->is('post')) {
-            $instituicoesHasTiposDoaco = $this->InstituicoesHasTiposDoacoes->patchEntity($instituicoesHasTiposDoaco, $this->request->data);
-            if ($this->InstituicoesHasTiposDoacoes->save($instituicoesHasTiposDoaco)) {
-                $this->Flash->success(__('The instituicoes has tipos doaco has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The instituicoes has tipos doaco could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('instituicoesHasTiposDoaco'));
-        $this->set('_serialize', ['instituicoesHasTiposDoaco']);
+        $instituicoesHasTiposDoaco = $novo;
+        $this->InstituicoesHasTiposDoacoes->save($instituicoesHasTiposDoaco);
     }
 
     /**

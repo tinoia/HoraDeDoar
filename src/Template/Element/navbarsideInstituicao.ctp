@@ -14,7 +14,7 @@
             </li>
             
             <li>
-                <a href="<?php echo $this->Url->build('/Instituicoes') ?>"><i class="fa fa-list fa-fw"></i>Minha Instituição<span class="fa arrow"></span></a>
+                <a href="<?php echo $this->Url->build('/Instituicoes/dashboard') ?>"><i class="fa fa-list fa-fw"></i>Minha Instituição<span class="fa arrow"></span></a>
             </li>
             
             
@@ -23,7 +23,7 @@
             </li>
 
             <li>
-                <a href="<?php echo $this->Url->build('/Doacoes') ?>"><i class="fa fa-sitemap fa-fw"></i>O que estou precisando<span class="fa arrow"></span></a>
+                <a href="<?php echo $this->Url->build('/Instituicoes/desejo_receber') ?>"><i class="fa fa-sitemap fa-fw"></i>O que estou precisando<span class="fa arrow"></span></a>
             </li>
 
             </ul>
