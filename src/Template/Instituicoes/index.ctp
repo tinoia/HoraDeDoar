@@ -112,7 +112,7 @@
                <div>
                
                <a href=<?php echo "/HoraDeDoar/doacoes/addDinheiro?id=".$id?> class="btn btn-info" role="button">Doar Dinheiro</a>                         
-               <a href="/HoraDeDoar/doacoes/a" class="btn btn-info" role="button">Doar Objetos</a>  
+               <a href=<?php echo "/HoraDeDoar/doacoes/addObjetos?id=".$id?> class="btn btn-info" role="button">Doar Objetos</a>
                </div>
            </p>
          </div>

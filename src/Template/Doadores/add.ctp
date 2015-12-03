@@ -51,6 +51,7 @@
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
                             <button type="reset" class="btn btn-success">Limpar</button>
                             <a href="/HoraDeDoar" class="btn btn-info" role="button">Voltar</a>
+                            
                             <?php echo $this->Form->end(); ?> 
                         </div>
                     </div>

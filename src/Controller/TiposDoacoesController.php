@@ -102,4 +102,17 @@ class TiposDoacoesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function get($id){
+        $query = $this->TiposDoacoes->find('all', [
+            'conditions' => ['id_tipos_doacoes' => $id]
+        ]);
+        return $query->first()->tipos_doacoes;
+
+    }
+
+    public function getTipos(){
+        $this->set('tipos', $this->paginate($this->TiposDoacoes));
+        $this->set('_serialize', ['tipos']);
+    }
 }

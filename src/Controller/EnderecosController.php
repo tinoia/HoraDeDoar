@@ -92,8 +92,8 @@ class EnderecosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $endereco = $this->Enderecos->patchEntity($endereco, $this->request->data);
             if ($this->Enderecos->save($endereco)) {
-                $this->Flash->success(__('The endereco has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('Endereço atualizado com sucesso.'));
+                
             } else {
                 $this->Flash->error(__('The endereco could not be saved. Please, try again.'));
             }
@@ -119,5 +119,12 @@ class EnderecosController extends AppController
             $this->Flash->error(__('The endereco could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function getbyId($id) {
+        $query = $this->Enderecos->find('all', [
+            'conditions' => ['id_enderecos' => $id]
+        ]);
+        return $query->first();
     }
 }

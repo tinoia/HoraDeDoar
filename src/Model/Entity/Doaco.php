@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property int $id_doadores
  * @property int $id_instituicoes
  * @property \Cake\I18n\Time $data_doacoes
+ * @property int $tipo_doacoes
  */
 class Doaco extends Entity
 {

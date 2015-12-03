@@ -29,6 +29,58 @@ class DoadoresController extends AppController
         $this->set('_serialize', ['doadores']);
     }
 
+    public function queroDoar(){
+
+        //pega dados da view e monta condições para consulta
+        if ($this->request->is('post')){
+            $condicoes = "n.checked=1 and (";
+            $alternativas = $this->request->data();
+            for($i = 1 ; $i<10 ; $i++){
+                if($alternativas[$i]==1)
+                    $condicoes = $condicoes."n.id_tipos_doacoes=".$i." or "; 
+
+            }   
+            $condicoes = substr_replace($condicoes, ')', -4, -1);
+            $session = $this->request->session();
+            $session->write('condicoes',$condicoes);
+            return $this->redirect(['controller' => 'Instituicoes','action' => 'quero_doar']);
+        }
+    }
+
+    public function geraCondicao($i){
+        switch ($i) {
+        
+        case 1:
+            return "n.id_tipos_doacoes=1 or ";
+            break;
+        case 2:
+            return "n.id_tipos_doacoes=2 or ";
+            break;
+        case 3:
+            return "n.id_tipos_doacoes=3 or ";
+            break;
+            case 4:
+            return "n.id_tipos_doacoes=4 or ";
+            break;
+            case 5:
+            return "n.id_tipos_doacoes=5 or ";
+            break;
+            case 6:
+            return "n.id_tipos_doacoes=6 or ";
+            break;
+            case 7;
+            return "n.id_tipos_doacoes=7 or ";
+            break;
+            case 8:
+            return "n.id_tipos_doacoes=8 or ";
+            break;
+            case 9:
+            return "n.id_tipos_doacoes=9 or ";
+            break;
+        }
+
+    }
+
     /**
      * View method
      *
@@ -144,8 +196,8 @@ class DoadoresController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $doadore = $this->Doadores->patchEntity($doadore, $this->request->data);
             if ($this->Doadores->save($doadore)) {
-                $this->Flash->success(__('The doadore has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('Dados atualizados com sucesso.'));
+                
             } else {
                 $this->Flash->error(__('The doadore could not be saved. Please, try again.'));
             }
@@ -178,5 +230,12 @@ class DoadoresController extends AppController
             'conditions' => ['users_iduser' => $idUser]
         ]);
         return $query->first()->id_doadores;
+    }
+
+    public function getDoadorbyIdUser($idUser) {
+        $query = $this->Doadores->find('all', [
+            'conditions' => ['users_iduser' => $idUser]
+        ]);
+        return $query->first();
     }
 }

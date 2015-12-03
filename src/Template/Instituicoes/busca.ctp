@@ -103,7 +103,7 @@ while($ln = mysql_fetch_assoc($query)){?>
 						<p> 
 							<?php
 							$id = $ln['id_instituicoes'];
-							$doacao = "SELECT tipos_doacoes FROM tipos_doacoes t INNER JOIN instituicoes_has_tipos_doacoes n ON t.id_tipos_doacoes = n.id_tipos_doacoes INNER JOIN instituicoes i ON n.id_instituicoes = i.id_instituicoes WHERE i.id_instituicoes=$id";
+							$doacao = "SELECT tipos_doacoes FROM tipos_doacoes t INNER JOIN instituicoes_has_tipos_doacoes n ON t.id_tipos_doacoes = n.id_tipos_doacoes INNER JOIN instituicoes i ON n.id_instituicoes = i.id_instituicoes WHERE i.id_instituicoes=$id and checked=1";
 							$re = mysql_query($doacao) or die(mysql_error());
 							while($ri = mysql_fetch_assoc($re)){
 							echo $ri['tipos_doacoes'];
@@ -112,7 +112,7 @@ while($ln = mysql_fetch_assoc($query)){?>
 						<div>
 
 							<a href=<?php echo "/HoraDeDoar/doacoes/addDinheiro?id=".$id?> class="btn btn-info" role="button">Doar Dinheiro</a>                         
-							<a href="/HoraDeDoar/doacoes/a" class="btn btn-info" role="button">Doar Objetos</a>  
+							<a href=<?php echo "/HoraDeDoar/doacoes/addObjetos?id=".$id?> class="btn btn-info" role="button">Doar Objetos</a>
 						</div>
 					</p>
 				</div>

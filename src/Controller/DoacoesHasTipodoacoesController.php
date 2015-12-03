@@ -43,16 +43,15 @@ class DoacoesHasTipodoacoesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($novo)
     {
-        $doacoesHasTipodoaco = $this->DoacoesHasTipodoacoes->newEntity();
         if ($this->request->is('post')) {
-            $doacoesHasTipodoaco = $this->DoacoesHasTipodoacoes->patchEntity($doacoesHasTipodoaco, $this->request->data);
-            if ($this->DoacoesHasTipodoacoes->save($doacoesHasTipodoaco)) {
-                $this->Flash->success(__('The doacoes has tipodoaco has been saved.'));
-                return $this->redirect(['action' => 'index']);
+            
+            if ($this->DoacoesHasTipodoacoes->save($novo)) {
+                
+                
             } else {
-                $this->Flash->error(__('The doacoes has tipodoaco could not be saved. Please, try again.'));
+                
             }
         }
         $this->set(compact('doacoesHasTipodoaco'));
@@ -102,4 +101,5 @@ class DoacoesHasTipodoacoesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
 }

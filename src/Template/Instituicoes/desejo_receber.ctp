@@ -7,9 +7,7 @@
 			</div>
 			<div class="panel-body">
 				<div class="col-lg-6">
-					<?php echo $this->Form->create('Tipos');
-					$conecta = mysql_connect("localhost", "root", "16521652") or print (mysql_error()); 
-       				mysql_select_db("novo", $conecta);?>
+					<?php echo $this->Form->create('Tipos');?>
 					<div class="form-group">
 						<?php  echo $this->Form->input('1',array('label'=>'Dinheiro','type'=>'checkbox')); ?>
 					</div>

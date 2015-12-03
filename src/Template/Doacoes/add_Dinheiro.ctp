@@ -43,10 +43,8 @@
             <div class="form-group">
                 <?php
                 $idInstituicao = $_GET['id'];
-                $dataHoje = date('Y-m-d H:i:s');
-                
                 echo $this->Form->input('id_instituicoes',array('type' => 'hidden','value' => $idInstituicao , 'class'=>'form-control')); 
-                echo $this->Form->input('data_doacoes',array('type' => 'text','value' => $dataHoje, 'class'=>'form-control')); 
+                
                 ?>
 
             </div>

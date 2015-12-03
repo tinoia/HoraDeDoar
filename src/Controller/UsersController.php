@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use App\Controller\InstituicoesCotroller;
+use App\Controller\InstituicoesController;
 use App\Controller\DoadoresController;
 /**
  * Users Controller

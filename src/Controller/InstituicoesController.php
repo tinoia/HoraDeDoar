@@ -64,7 +64,27 @@ class InstituicoesController extends AppController
                 }
             } 
         }
+    }
+
+    public function queroDoar(){
+        $session = $this->request->session();
+        $condicoes = $session->read('condicoes');
+        $this->set('condicoes', $condicoes);
+        $this->set('_serialize', ['condicoes']);
+    }
+
+    public function buscaGeografica(){
+        $session = $this->request->session();
+        $idUsuario = $session->read('Auth.User.iduser');
+        $controller = new DoadoresController();
+        $controllerEnderecos = new EnderecosController();
+        $Doador = $controller->getDoadorbyIdUser($idUsuario);
         
+        $Endereco = $controllerEnderecos->getbyId($Doador->id_enderecos);
+        $this->set('doador', $Doador);
+        $this->set('endereco', $Endereco);
+        $this->set('_serialize', ['doador']);
+        $this->set('_serialize', ['endereco']);
 
     }
 

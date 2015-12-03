@@ -23,7 +23,8 @@ class DoacoesFixture extends TestFixture
         'anonima_doacoes' => ['type' => 'integer', 'length' => 1, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'id_doadores' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'id_instituicoes' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'data_doacoes' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'data_doacoes' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'tipo_doacoes' => ['type' => 'integer', 'length' => 3, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
             'FK_doacao' => ['type' => 'index', 'columns' => ['id_doadores'], 'length' => []],
             'FK_doacao2' => ['type' => 'index', 'columns' => ['id_instituicoes'], 'length' => []],
@@ -53,7 +54,8 @@ class DoacoesFixture extends TestFixture
             'anonima_doacoes' => 1,
             'id_doadores' => 1,
             'id_instituicoes' => 1,
-            'data_doacoes' => '2015-11-27 03:10:49'
+            'data_doacoes' => '2015-12-02',
+            'tipo_doacoes' => 1
         ],
     ];
 }
